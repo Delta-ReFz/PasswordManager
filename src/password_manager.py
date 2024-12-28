@@ -1,13 +1,22 @@
 master_pwd = input("What is the master password? ")
 
 def view():
-    pass
+    with open('passwords.txt', 'r') as f:
+        for line in f.readlines():
+            data = line.rstrip() #rstrip will strip the carriage return
+            user , passw = data.split("|")
+            print("User:", user,"\nPassword:", passw)
 
-view()
+
 
 def add():
     name = input("Account Name:  ")
     pwd = input("Password:  ")
+
+    #with open == closes the file when we finished using it, 'a' mode means that you can add something in the existing file, or if the file dosent exist it will create a new file named 'password.txt'
+    with open('passwords.txt', 'a') as f:
+        f.write(name + "|" + pwd + "\n")
+
 
 
 
